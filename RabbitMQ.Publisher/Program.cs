@@ -10,14 +10,18 @@ factory.Uri = new Uri("amqps://mkckuyqi:T72UpsjX0A1wCShoziWPCM9mK5JgjpGx@woodpec
 using IConnection connection = factory.CreateConnection(); //IDisposable olduğu için using kullanıyorum
 using IModel channel = connection.CreateModel();
 
-// Queue oluşturma -> exclusive=true başka exchange erişemez demek
-channel.QueueDeclare(queue: "example-queue", exclusive: false, durable: true);
+channel.ExchangeDeclare(
+    exchange: "direct-exchange-example",
+    type: ExchangeType.Direct);
 
-IBasicProperties properties = channel.CreateBasicProperties();
-properties.Persistent = true;
-// Queue'ya mesaj gönderme
-// RabbitMQ kuyruğa atacağı mesajları byte türünden kabul eder.
-byte[] message = Encoding.UTF8.GetBytes("merhaba");
-channel.BasicPublish(exchange: "", routingKey: "example-queue", body: message, basicProperties: properties); // exhange default 'direct'
+while (true)
+{
+    Console.WriteLine("Mesaj : "); ;
+    string mesage = Console.ReadLine();
+    byte[] byteMessage = Encoding.UTF8.GetBytes(mesage);
 
-Console.Read();
+    channel.BasicPublish(
+        exchange: "direct-exchange-example",
+        routingKey: "direct-queue-example",
+        body: byteMessage);
+}

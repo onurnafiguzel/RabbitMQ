@@ -10,18 +10,37 @@ factory.Uri = new Uri("amqps://mkckuyqi:T72UpsjX0A1wCShoziWPCM9mK5JgjpGx@woodpec
 using IConnection connection = factory.CreateConnection(); //IDisposable olduğu için using kullanıyorum
 using IModel channel = connection.CreateModel();
 
-// Queue oluşturma
-channel.QueueDeclare(queue: "example-queue", exclusive: false, durable: true);
+// 1.adım
+channel.ExchangeDeclare(
+	exchange: "direct-exchange-example",
+	type: ExchangeType.Direct
+	);
 
-// Queue'dan mesaj okuma
+// 2.adım
+string queueName = channel.QueueDeclare().QueueName;
+
+
+// 3.adım
+channel.QueueBind(
+	queue: queueName,
+	exchange: "direct-exchange-example",
+	routingKey: "direct-queue-example");
+
 EventingBasicConsumer consumer = new(channel);
-channel.BasicConsume(queue: "example-queue", autoAck: false, consumer);
+channel.BasicConsume(
+	queue: queueName,
+	autoAck: true,
+	consumer: consumer
+	);
+
 consumer.Received += (sender, e) =>
 {
-	// Kuyruğa gelen mesajın işlendiği yerdir!
-	// e.body : Kuyruktaki mesajın verisini bütünsel olarak getirecektir. -> e.body.span || e.body.toarray()
-	Console.WriteLine(Encoding.UTF8.GetString(e.Body.Span));
-
-	channel.BasicAck(deliveryTag: e.DeliveryTag, multiple: false);
+	string message = Encoding.UTF8.GetString(e.Body.Span);
+	Console.WriteLine(message);
 };
+
 Console.Read();
+
+// 1. Adım: Publisher'daki exchange ile birebir aynı isim ve type'a sahip bir exchange tanımlanmalıdır!
+// 2. Adım: Publisher tarafından routing key'de bulunan değerdeki kuyruğa gönderilen mesajları kendi oluşturduğumuz kuyruğa yönlendirerek tüketmemz gerekmektedir. Bunun için öncelikle bir kuyruk oluşturmaldıır!
+// 3. Adım: 
