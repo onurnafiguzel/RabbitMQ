@@ -11,11 +11,13 @@ using IConnection connection = factory.CreateConnection(); //IDisposable olduğu
 using IModel channel = connection.CreateModel();
 
 // Queue oluşturma -> exclusive=true başka exchange erişemez demek
-channel.QueueDeclare(queue: "example-queue", exclusive: false);
+channel.QueueDeclare(queue: "example-queue", exclusive: false, durable: true);
 
+IBasicProperties properties = channel.CreateBasicProperties();
+properties.Persistent = true;
 // Queue'ya mesaj gönderme
 // RabbitMQ kuyruğa atacağı mesajları byte türünden kabul eder.
 byte[] message = Encoding.UTF8.GetBytes("merhaba");
-channel.BasicPublish(exchange: "", routingKey: "example-queue", body: message); // exhange default 'direct'
+channel.BasicPublish(exchange: "", routingKey: "example-queue", body: message, basicProperties: properties); // exhange default 'direct'
 
 Console.Read();

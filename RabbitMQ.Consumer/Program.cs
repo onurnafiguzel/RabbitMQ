@@ -11,15 +11,17 @@ using IConnection connection = factory.CreateConnection(); //IDisposable olduğu
 using IModel channel = connection.CreateModel();
 
 // Queue oluşturma
-channel.QueueDeclare(queue: "example-queue", exclusive: false);
+channel.QueueDeclare(queue: "example-queue", exclusive: false, durable: true);
 
 // Queue'dan mesaj okuma
 EventingBasicConsumer consumer = new(channel);
-channel.BasicConsume(queue: "example-queue", false, consumer);
+channel.BasicConsume(queue: "example-queue", autoAck: false, consumer);
 consumer.Received += (sender, e) =>
 {
 	// Kuyruğa gelen mesajın işlendiği yerdir!
 	// e.body : Kuyruktaki mesajın verisini bütünsel olarak getirecektir. -> e.body.span || e.body.toarray()
 	Console.WriteLine(Encoding.UTF8.GetString(e.Body.Span));
+
+	channel.BasicAck(deliveryTag: e.DeliveryTag, multiple: false);
 };
 Console.Read();
