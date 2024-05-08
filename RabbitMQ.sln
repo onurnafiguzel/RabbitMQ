@@ -7,17 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Publisher", "Rabbi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Consumer", "RabbitMQ.Consumer\RabbitMQ.Consumer.csproj", "{F2AC77DA-75C5-427F-8E8E-94598A7DB1DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Fanout.Consumer", "RabbitMQ.Fanout.Consumer\RabbitMQ.Fanout.Consumer.csproj", "{448E21C7-2B0E-48D5-AE83-85EFF0BE98FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Fanout.Consumer", "RabbitMQ.Fanout.Consumer\RabbitMQ.Fanout.Consumer.csproj", "{448E21C7-2B0E-48D5-AE83-85EFF0BE98FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.FanoutPublisher", "RabbitMQ.FanoutPublisher\RabbitMQ.FanoutPublisher.csproj", "{6A476CD6-A8BF-4BC4-A95B-CBE28945E039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.FanoutPublisher", "RabbitMQ.FanoutPublisher\RabbitMQ.FanoutPublisher.csproj", "{6A476CD6-A8BF-4BC4-A95B-CBE28945E039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Topic.Consumer", "RabbitMQ.Topic.Consumer\RabbitMQ.Topic.Consumer.csproj", "{96A4E581-D6C1-4BB0-9249-9B0EC470E0A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Topic.Consumer", "RabbitMQ.Topic.Consumer\RabbitMQ.Topic.Consumer.csproj", "{96A4E581-D6C1-4BB0-9249-9B0EC470E0A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Topic.Publisher", "RabbitMQ.Topic.Publisher\RabbitMQ.Topic.Publisher.csproj", "{7A3FD11E-4F9A-4839-B35F-27D89C40274F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Topic.Publisher", "RabbitMQ.Topic.Publisher\RabbitMQ.Topic.Publisher.csproj", "{7A3FD11E-4F9A-4839-B35F-27D89C40274F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Header.Publisher", "RabbitMQ.Header.Publisher\RabbitMQ.Header.Publisher.csproj", "{53BDF45E-EFB0-4C1F-A4C5-D2DF8195F3E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Header.Publisher", "RabbitMQ.Header.Publisher\RabbitMQ.Header.Publisher.csproj", "{53BDF45E-EFB0-4C1F-A4C5-D2DF8195F3E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Header.Consumer", "RabbitMQ.Header.Consumer\RabbitMQ.Header.Consumer.csproj", "{46C7973B-7E1B-47AE-AF55-0E783C4B0D5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQ.Header.Consumer", "RabbitMQ.Header.Consumer\RabbitMQ.Header.Consumer.csproj", "{46C7973B-7E1B-47AE-AF55-0E783C4B0D5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Message.Templates.Consumer", "RabbitMQ.Message.Templates.Consumer\RabbitMQ.Message.Templates.Consumer.csproj", "{11CF0416-A4B6-46F5-80F2-6F62C5AE5C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQ.Message.Templates.Publisher", "RabbitMQ.Message.Templates.Publisher\RabbitMQ.Message.Templates.Publisher.csproj", "{9341931C-D6DD-44BF-8D27-D8C63F0F503B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{46C7973B-7E1B-47AE-AF55-0E783C4B0D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46C7973B-7E1B-47AE-AF55-0E783C4B0D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46C7973B-7E1B-47AE-AF55-0E783C4B0D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CF0416-A4B6-46F5-80F2-6F62C5AE5C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CF0416-A4B6-46F5-80F2-6F62C5AE5C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CF0416-A4B6-46F5-80F2-6F62C5AE5C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CF0416-A4B6-46F5-80F2-6F62C5AE5C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9341931C-D6DD-44BF-8D27-D8C63F0F503B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9341931C-D6DD-44BF-8D27-D8C63F0F503B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9341931C-D6DD-44BF-8D27-D8C63F0F503B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9341931C-D6DD-44BF-8D27-D8C63F0F503B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
